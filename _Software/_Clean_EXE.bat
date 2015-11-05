@@ -5,6 +5,7 @@ echo . Remove Binary folders and Files
 echo .
 call _Clean.bat
 
+echo .
 
 rem del /s "Src\Android\Debug\*.*"
 erase /Q /F /S  "Src\Android\*.*"
