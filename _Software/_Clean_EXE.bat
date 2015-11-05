@@ -1,12 +1,13 @@
 @echo off
 echo .
-echo . CLEAN: Remove Binary folders and Files
+echo ## _Clean_EXE ##
+echo . Remove Binary folders and Files
 echo .
-_Clean.bat
+call _Clean.bat
 
 
-
-rem erase /Q /F /S  Src\Android\*.*
+rem del /s "Src\Android\Debug\*.*"
+erase /Q /F /S  "Src\Android\*.*"
 rem erase /Q /F /S  Src\iOSDevice32\*.*
 rem erase /Q /F /S  Src\iOSDevice64\*.*
 rem erase /Q /F /S  Src\iOSSimulator\*.*
@@ -28,4 +29,4 @@ echo . Done
 echo .
 
 timeout 5
-pause
+rem pause
