@@ -11,6 +11,7 @@ uses
   FMX.Objects, FMX.Edit, FMX.ExtCtrls
   , FMX.Ani
   , S4.ImageViewer
+  , S4.ImageViewer.Controller
   ;
 
 type
@@ -98,6 +99,7 @@ Uses
   , FMX.InertialMovement
   , FMX.Platform
   , FMX.MediaLibrary
+  , S4.Types
   , S4.Media.Photo
   ;
 
@@ -181,8 +183,8 @@ begin
   FTabFkt                    := nil;
 
   FImageViewController := TS4ImageViewController.Create( ImageViewer1 );
-  IImageViewer         := FImageViewController; // FRom now on this is my access
-  IImageViewer.SetScaleLimits(TS4ImageViewController.ScaleMin,
+  IImageViewer         := FImageViewController; // From now on this is my access interface
+  IImageViewer.SetScaleLimits(IImageViewer.ScaleMin, // TS4ImageViewController. ScaleMin,
                               100);
   IImageViewer.OnViewportChanged :=  procedure (Arg1, Arg2, Arg3 : Single)
                                   begin
@@ -196,7 +198,10 @@ begin
 
   IImageViewer.OnSelectionChanged :=  procedure (Arg1, Arg2, Arg3 : Single)
                                   begin
-                 TextPhotoHitData.Text := Format('Sel.X: %4.0f, Y: %4.0f, Size %1.3f', [Arg1, Arg2, Arg3]);
+                                    if  Arg3 > 0.0 then
+                 TextPhotoHitData.Text := Format('Sel.X: %4.0f, Y: %4.0f, DRAW', [Arg1, Arg2])
+  else
+                 TextPhotoHitData.Text := Format('Sel.X: %4.0f, Y: %4.0f',       [Arg1, Arg2]);
                                   end;
 
 
