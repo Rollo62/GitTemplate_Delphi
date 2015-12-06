@@ -78,6 +78,7 @@ type
 //##    procedure TrackBar1Change(Sender: TObject);
 //##    procedure Button7Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
 
 
   private
@@ -175,76 +176,120 @@ end;
 procedure TForm1.Button3Click(Sender: TObject);
 begin
 
-  TS4Media_TakePhoto.Execute(TSize.Create(EditPhotoSize.Text.ToInteger,
-                                          EditPhotoSize.Text.ToInteger),
-                             False //Do not store in Album
-                             // Image ready
-                             , procedure (const bmpPhoto : TBitmap)
-                             begin
+  FImageViewController.TakePhoto( TSize.Create(EditPhotoSize.Text.ToInteger,
+                                               EditPhotoSize.Text.ToInteger)
+                                );
 
-                               IImageViewer.Bitmap := bmpPhoto;
-
-//                               ImageViewer1.Bitmap.Assign(bmpPhoto);
+//  TS4Media_TakePhoto.Execute(TSize.Create(EditPhotoSize.Text.ToInteger,
+//                                          EditPhotoSize.Text.ToInteger),
+//                             False //Do not store in Album
+//                             // Image ready
+//                             , procedure (const bmpPhoto : TBitmap)
+//                             begin
 //
-//                               TextPhotoResult.Text := 'Result W: ' +          bmpPhoto.Width.ToString  +
-//                                                       ', H: '      +          bmpPhoto.Height.ToString +
-//                                                       Format(' Scale %1.4f', [bmpPhoto.BitmapScale])
-//                                                       ;
+//                               IImageViewer.Bitmap := bmpPhoto;
 //
-//                               Bitmap_Changed(bmpPhoto.Width, bmpPhoto.Height);
-
-                             end
-                             // Image cancelled
-                             , procedure
-                             begin
-                               IImageViewer.Bitmap_Clear;// := nil;
-
-                               ShowMessage('Take Photo was cancelled');
-                             end
-                            );
-
+////                               ImageViewer1.Bitmap.Assign(bmpPhoto);
+////
+////                               TextPhotoResult.Text := 'Result W: ' +          bmpPhoto.Width.ToString  +
+////                                                       ', H: '      +          bmpPhoto.Height.ToString +
+////                                                       Format(' Scale %1.4f', [bmpPhoto.BitmapScale])
+////                                                       ;
+////
+////                               Bitmap_Changed(bmpPhoto.Width, bmpPhoto.Height);
+//
+//                             end
+//                             // Image cancelled
+//                             , procedure
+//                             begin
+//                               IImageViewer.Bitmap_Clear;// := nil;
+//
+//                               ShowMessage('Take Photo was cancelled');
+//                             end
+//                            );
+//
 
 end;
 
 procedure TForm1.Button6Click(Sender: TObject);
 begin
 
-  TS4Media_TakeGallery.Execute(TSize.Create(EditPhotoSize.Text.ToInteger,
-                                          EditPhotoSize.Text.ToInteger),
-                             False //Do not store in Album
-                             // Image ready
-                             , procedure (const bmpPhoto : TBitmap)
+  FImageViewController.TakeGallery( TSize.Create(EditPhotoSize.Text.ToInteger,
+                                                 EditPhotoSize.Text.ToInteger)
+                                   );
 
-  var
-    sP: Single;
-  begin
 
-                               IImageViewer.Bitmap.Assign( bmpPhoto );
 
-//                               ImageViewer1.Bitmap.Assign(bmpPhoto);
+//  TS4Media_TakeGallery.Execute(TSize.Create(EditPhotoSize.Text.ToInteger,
+//                                          EditPhotoSize.Text.ToInteger),
+//                             False //Do not store in Album
+//                             // Image ready
+//                             , procedure (const bmpPhoto : TBitmap)
 //
-//                               TextPhotoResult.Text := 'Result W: ' +          bmpPhoto.Width.ToString  +
-//                                                       ', H: '      +          bmpPhoto.Height.ToString +
-//                                                       Format(' Scale %1.4f', [bmpPhoto.BitmapScale])
-//                                                       ;
+//  var
+//    sP: Single;
+//  begin
 //
-//                               Bitmap_Changed(bmpPhoto.Width, bmpPhoto.Height);
+//                               IImageViewer.Bitmap.Assign( bmpPhoto );
+//
+////                               ImageViewer1.Bitmap.Assign(bmpPhoto);
+////
+////                               TextPhotoResult.Text := 'Result W: ' +          bmpPhoto.Width.ToString  +
+////                                                       ', H: '      +          bmpPhoto.Height.ToString +
+////                                                       Format(' Scale %1.4f', [bmpPhoto.BitmapScale])
+////                                                       ;
+////
+////                               Bitmap_Changed(bmpPhoto.Width, bmpPhoto.Height);
+//
+//                               TabControl_Refresh_TakePhoto;
+//
+//                               sP := 1.0;
+//                               FImageViewController.ScalePicture := sP;
+//
+//                             end
+//                             // Image cancelled
+//                             , procedure
+//                             begin
+//                               IImageViewer.Bitmap_Clear;// := nil;
+//
+//                               ShowMessage('Take Photo was cancelled');
+//                             end
+//                            );
 
-                               TabControl_Refresh_TakePhoto;
 
-                               sP := 1.0;
-                               FImageViewController.ScalePicture := sP;
+end;
 
-                             end
-                             // Image cancelled
-                             , procedure
-                             begin
-                               IImageViewer.Bitmap_Clear;// := nil;
 
-                               ShowMessage('Take Photo was cancelled');
-                             end
-                            );
+procedure TForm1.Button7Click(Sender: TObject);
+var
+  iH_New: Single;
 
+begin
+
+  FImageViewController.Keyfield.Slide_Out;
+
+//  if PanelSlider.Tag = 0 then
+//  begin
+//    PanelSlider.Tag := 1;
+//    iH_New := Panel2.Position.Y + Panel2.Height - PanelSlider.Height;
+//    FloatAnimationSlider.Stop;
+//    FloatAnimationSlider.StartValue := PanelSlider.Position.Y;
+//    FloatAnimationSlider.StopValue  := iH_New;
+//    Panel2.Visible                  := False;
+//    FloatAnimationSlider.Start;
+//  end
+//  else
+//  begin
+//    PanelSlider.Tag := 0;
+//
+//    iH_New := Panel2.Position.Y + Panel2.Height;
+//    FloatAnimationSlider.Stop;
+//    FloatAnimationSlider.StartValue := PanelSlider.Position.Y;
+//    FloatAnimationSlider.StopValue  := iH_New+1;
+//    Panel2.Visible                  := False;
+//    FloatAnimationSlider.Start;
+//
+//  end;
 
 end;
 
@@ -552,6 +597,8 @@ end;
 
 
 procedure TForm1.Setup_Default;
+var
+  iH_New: Single;
 begin
 
 //  FStopWatch := TStopWatch.Create;
@@ -584,6 +631,14 @@ begin
   // ImageViewer Part
   //
 
+  //
+  // Initialize Positions
+  //
+//  iH_New := Panel2.Position.Y + Panel2.Height;
+//  PanelSlider.Position.Y := iH_New;
+//  Panel2.Visible         := False;
+
+
   FImageViewController := TS4ImageViewController.Create( ImageViewer1, TrackBar1 );
   IImageViewer         := FImageViewController; // From now on this is my access interface
   IImageViewer.SetScaleLimits(IImageViewer.ScaleMin, // TS4ImageViewController. ScaleMin,
@@ -613,6 +668,7 @@ begin
 
 
 end;
+
 
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -648,10 +704,14 @@ end;
 procedure TForm1.FormResize(Sender: TObject);
 begin
   // Do I recognize the Orientation Change ?
-  // Android: Yes
+  // Android: Yes, iOS-Sim: YES, iOS-Dev: YES, OSX:-Yes, Win-YES
   if Assigned(FImageViewController) then
   begin
-    FImageViewController.Magnifier.Setup_Size; // Resize
+    FImageViewController.DoOnResize;
+
+//    FImageViewController.Magnifier.Setup_Size; // Resize
+//
+//    FImageViewController.Keyfield.ReAlign_Keyfield; // ReAlign
   end;
 
 

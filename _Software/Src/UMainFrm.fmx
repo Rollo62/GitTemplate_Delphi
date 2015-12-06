@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Form1'
   ClientHeight = 480
-  ClientWidth = 640
+  ClientWidth = 603
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -14,7 +14,7 @@ object Form1: TForm1
   DesignerMasterStyle = 0
   object TabControlMain: TTabControl
     Align = Client
-    Size.Width = 640.000000000000000000
+    Size.Width = 603.000000000000000000
     Size.Height = 432.000000000000000000
     Size.PlatformDefault = False
     TabIndex = 3
@@ -98,7 +98,7 @@ object Form1: TForm1
       ExplicitSize.cy = 26.000000000000000000
       object Panel1: TPanel
         Align = Top
-        Size.Width = 640.000000000000000000
+        Size.Width = 603.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
@@ -164,37 +164,39 @@ object Form1: TForm1
           Size.PlatformDefault = False
           TabOrder = 1
           Text = 'Cut'
+          OnClick = Button7Click
         end
       end
       object Panel2: TPanel
         Align = Bottom
         Position.Y = 346.000000000000000000
-        Size.Width = 640.000000000000000000
+        Size.Width = 603.000000000000000000
         Size.Height = 60.000000000000000000
         Size.PlatformDefault = False
+        Visible = False
         TabOrder = 1
         object TextPhotoResult: TText
           Align = Top
-          Size.Width = 640.000000000000000000
+          Size.Width = 603.000000000000000000
           Size.Height = 30.000000000000000000
           Size.PlatformDefault = False
         end
         object TextPhotoHitData: TText
           Align = Top
           Position.Y = 30.000000000000000000
-          Size.Width = 640.000000000000000000
+          Size.Width = 603.000000000000000000
           Size.Height = 30.000000000000000000
           Size.PlatformDefault = False
         end
       end
       object ImageViewer1: TImageViewer
         Align = Client
-        Size.Width = 640.000000000000000000
-        Size.Height = 297.000000000000000000
+        Size.Width = 603.000000000000000000
+        Size.Height = 357.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
-        Viewport.Width = 636.000000000000000000
-        Viewport.Height = 293.000000000000000000
+        Viewport.Width = 599.000000000000000000
+        Viewport.Height = 353.000000000000000000
       end
       object Memo1: TMemo
         Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
@@ -254,7 +256,7 @@ object Form1: TForm1
   object PanelFooter: TPanel
     Align = MostBottom
     Position.Y = 432.000000000000000000
-    Size.Width = 640.000000000000000000
+    Size.Width = 603.000000000000000000
     Size.Height = 48.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
@@ -285,7 +287,7 @@ object Form1: TForm1
       Orientation = Horizontal
       Position.X = 184.000000000000000000
       Position.Y = 14.000000000000000000
-      Size.Width = 456.000000000000000000
+      Size.Width = 419.000000000000000000
       Size.Height = 19.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 3
